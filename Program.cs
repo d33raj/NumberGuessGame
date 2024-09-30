@@ -15,14 +15,25 @@ namespace NumberGuessGame
             char choice;
             do
             {
-                int minValue, maxValue;
+            int minValue, maxValue;
             Console.WriteLine("Enter start number: ");
             minValue=Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("\nEnter end number: ");
             maxValue = Convert.ToInt16(Console.ReadLine());
+            
+            GuesstheNumber(minValue,maxValue);
 
+            Console.WriteLine("Do you want to check another number? (y/n): ");
+            choice = Convert.ToChar(Console.ReadLine());
+
+            } while (choice == 'y' || choice == 'Y');
+
+        }
+
+        static void GuesstheNumber(int minValue, int maxValue)
+        {
             Random r = new Random();
-            int n = r.Next(minValue,maxValue+1);
+            int n = r.Next(minValue, maxValue + 1);
             Console.WriteLine($"A number is choosed randomly from {minValue} and {maxValue} . Try to Guess it? ");
 
 
@@ -42,12 +53,6 @@ namespace NumberGuessGame
                 else
                     Console.WriteLine("The number Guessed is Less than " + guess);
             }
-
-            Console.WriteLine("Do you want to check another number? (y/n): ");
-            choice = Convert.ToChar(Console.ReadLine());
-
-            } while (choice == 'y' || choice == 'Y');
-
         }
     }
 }
